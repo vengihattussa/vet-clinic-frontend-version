@@ -29,7 +29,7 @@ import {Box, Button, HStack, StackDivider, VStack, Grid,Flex, Image,useDisclosur
   ListItem,
   ListIcon,} from "@chakra-ui/react";
   import FormCheckbox from "@src/common/Form/Checkbox";
-
+import CalendarView from "@src/common/CalendarView/CalendarView"
 import Logo from "@src/assets/logo.svg";
 import CustomModal from "@src/common/CustomModal";
 import PopoverModal from "@src/common/OptionPopover";
@@ -98,6 +98,12 @@ const Header = () => {
   const modalAppointment = useDisclosure();
   const modalWhiteBoard = useDisclosure();
   const modalMedicalhistory = useDisclosure();
+  const modalChoosePatient = useDisclosure();
+  const modalAppopening = useDisclosure();
+  const modalRecurringAppointment = useDisclosure();
+  const modalRecurPattern = useDisclosure();
+  
+ 
   const methods = useForm({   
     });
     const {control} = methods;
@@ -169,9 +175,57 @@ const Header = () => {
             }}
             fontSize={"sm"}
            
+            onClick={modalRecurringAppointment.onOpen}
+          >
+         Recurr
+           
+          </Button> 
+        <Button
+            variant={"outline"}
+            colorScheme="gray"
+            px={2}
+            py={4}
+            mr={2}
+            _hover={{
+              background: "primary.500",
+            }}
+            fontSize={"sm"}
+           
+            onClick={modalAppopening.onOpen}
+          >
+          apt Opg
+           
+          </Button> 
+        <Button
+            variant={"outline"}
+            colorScheme="gray"
+            px={2}
+            py={4}
+            mr={2}
+            _hover={{
+              background: "primary.500",
+            }}
+            fontSize={"sm"}
+           
+            onClick={modalChoosePatient.onOpen}
+          >
+          Choose patient
+           
+          </Button>   
+        <Button
+            variant={"outline"}
+            colorScheme="gray"
+            px={2}
+            py={4}
+            mr={2}
+            _hover={{
+              background: "primary.500",
+            }}
+            fontSize={"sm"}
+           
             onClick={modalMedicalhistory.onOpen}
           >
-          Medical History
+          Mdl Histy
            
           </Button>   
         <Button
@@ -187,7 +241,7 @@ const Header = () => {
            
             onClick={modalWhiteBoard.onOpen}
           >
-          WhiteBoard
+          WhteBrd
            
           </Button>   
         <Button
@@ -203,7 +257,7 @@ const Header = () => {
            
             onClick={modalAppointment.onOpen}
           >
-           Appointment
+           Apptment
            
           </Button>   
         <Button
@@ -219,7 +273,7 @@ const Header = () => {
            
             onClick={modalOwnership.onOpen}
           >
-           Ownership
+           Ownrshp
            
           </Button>   
         <Button
@@ -235,7 +289,7 @@ const Header = () => {
            
             onClick={modalFollowup.onOpen}
           >
-           Follow up
+           Flw up
            
           </Button>   
         <Button
@@ -251,7 +305,7 @@ const Header = () => {
            
             onClick={modalReminder.onOpen}
           >
-           Reminder
+           Remder
            
           </Button>  
         <Button
@@ -267,7 +321,7 @@ const Header = () => {
            
             onClick={modalSix.onOpen}
           >
-            Print Mailing
+            Mailing
            
           </Button>  
         <Button
@@ -485,15 +539,13 @@ defaultValue="Hasen, Jerod"
     <RadioGroup onChange={setValue} value={value}>
       <Stack direction="row">
         <Radio value="1">Send in plain text</Radio>
-        <Radio value="2">Send as HTML content</Radio>
-        
+        <Radio value="2">Send as HTML content</Radio> 
       </Stack>
     </RadioGroup> 
     </div>   
     
     <Textarea resize="none" rows={10} defaultValue="07-19-07 11:25a:" className="modaltextarea" style={{marginTop:"5px"}} />
     <FormControl className="optionselect">
-      
       <div className="selectoption">
       <Select placeholder="">
         <option value="option1">Brother FAX-4100</option>
@@ -553,7 +605,6 @@ defaultValue="Hasen, Jerod"
     />
     </div>   
     </Grid>
-
   </ModalBody>
   <ModalFooter>
   <Button variant={"outline"} mr={3} onClick={modalFour.onClose}>
@@ -585,9 +636,7 @@ defaultValue="Hasen, Jerod"
     label="Undelete Accounting For"
     // isRequired
     defaultValue="#1617 Hasen, Jerod"   
-    />
-
-     
+    />    
 <TableContainer className="client-table">
   <Table variant="simple" className="clientfile">
     <Thead>
@@ -769,16 +818,13 @@ defaultValue="Hasen, Jerod"
   </ModalFooter>
 </ModalContent>
 </Modal>
-
 {/* Reminder Template*/}
-
 <Modal isOpen={modalReminder.isOpen} onClose={modalReminder.onClose} size={"lg"}>
 <ModalOverlay />
 <ModalContent className="PrintMailing ">
   <ModalHeader>Reminder Template</ModalHeader>
   <ModalCloseButton />
   <ModalBody className="" style={{padding:"10px"}}>
-  
     <div className="bg-class" style={{padding:0}}>
     <h4 className="title-rem">Reminder</h4>  
     <Grid templateColumns="repeat(1, 250px 1fr)" gap={1}  className="sizereize p10" > 
@@ -829,7 +875,6 @@ defaultValue="Hasen, Jerod"
               />
     </Grid> 
     </div>
-
     <Box my={2} p={0} className="bg-class">
       <Tabs variant="enclosed">
         <TabList>
@@ -859,7 +904,6 @@ defaultValue="Hasen, Jerod"
               </Select>
               </div>
             </FormControl>
-
             <FormCheckbox
                         control={control}
                         name="nevertreated"
@@ -878,7 +922,6 @@ defaultValue="Hasen, Jerod"
               </Select>
               </div>
             </FormControl>
-
           <FormInput
               control={control}
               //placeholder="Hasen, Jerod"
@@ -899,7 +942,6 @@ defaultValue="Hasen, Jerod"
             </FormControl>
 </Grid>
 <Grid templateColumns="repeat(1, 300px 100px 200px)" gap={1}  className="sizereize p10" mb={"2"} style={{alignItems:"center",borderBottom: "1px solid #e8e3e4"}}> 
-
             <FormControl className="optionselect">
             <legend>Stop reminding</legend>
               <div className="selectoption">
@@ -910,7 +952,6 @@ defaultValue="Hasen, Jerod"
               </Select>
               </div>
             </FormControl>
-
           <FormInput
               control={control}
               //placeholder="Hasen, Jerod"
@@ -931,8 +972,7 @@ defaultValue="Hasen, Jerod"
             </FormControl>   
             </Grid>
             <Grid templateColumns="repeat(2, 2fr)" gap={1}  className="sizereize" style={{alignItems:"center",padding:"10px",borderBottom: "1px solid #e8e3e4"}}> 
-               <div>        
-                
+               <div>                     
             <Grid templateColumns="repeat(1, 350px 2fr)" gap={1}  className="sizereize p10 patient-treat" mt={"2"} style={{alignItems:"center",}}> 
         
           <FormInput
@@ -1031,7 +1071,6 @@ defaultValue="Hasen, Jerod"
             </FormControl>
 </Grid>
 <Grid templateColumns="repeat(1, 300px 100px 200px)" gap={1}  className="sizereize p10" mb={"2"} style={{alignItems:"center",borderBottom: "1px solid #e8e3e4"}}> 
-
             <FormControl className="optionselect">
             <legend>Stop reminding</legend>
               <div className="selectoption">
@@ -1042,7 +1081,6 @@ defaultValue="Hasen, Jerod"
               </Select>
               </div>
             </FormControl>
-
           <FormInput
               control={control}
               //placeholder="Hasen, Jerod"
@@ -1052,7 +1090,6 @@ defaultValue="Hasen, Jerod"
               defaultValue=" "   
               />
             <FormControl className="optionselect">
-              
               <div className="selectoption">
               <Select placeholder="(none)">
                 <option value="option1">Option 1</option>
@@ -2528,6 +2565,7 @@ defaultValue="Hasen, Jerod"
   </ModalFooter>
 </ModalContent>
 </Modal>
+{/* Medical history */}
 <Modal isOpen={modalMedicalhistory.isOpen} onClose={modalMedicalhistory.onClose} size={"xl"}>
 <ModalOverlay />
 <ModalContent className="Medicalhistory">
@@ -2829,8 +2867,8 @@ defaultValue="Hasen, Jerod"
           </Grid>
           </Container>
 
-          <Container maxW="container.xl"   style={{padding:"0px"}} mt={2}>
-      <Grid templateColumns="repeat(12, 1fr)" gap={2}>
+        <Container maxW="container.xl"   style={{padding:"0px"}} mt={2}>
+        <Grid templateColumns="repeat(12, 1fr)" gap={2}>
         <GridItem colSpan={[12, 4]} className="bg-Appointment">
           <Box  p={0}>
           <Stack>
@@ -3245,6 +3283,533 @@ defaultValue="Hasen, Jerod"
       Done
      </Button>
     
+  </ModalFooter>
+</ModalContent>
+</Modal>
+{/* Choose patient */}
+<Modal isOpen={modalChoosePatient.isOpen} onClose={modalChoosePatient.onClose} size={"sm"}>
+<ModalOverlay />
+<ModalContent className="choosepatient ">
+  <ModalHeader>Choose Patient</ModalHeader>
+  <ModalCloseButton />
+  <ModalBody className="" style={{padding:"10px"}}>
+  <Container maxW="container.xl"   style={{padding:"0px"}} mt={0}>
+  <Grid templateColumns="repeat(12, 1fr)" gap={2}>
+  <GridItem colSpan={[12, 12]} className="bg-Appointment" style={{background: "rgb(65 0 147 / 3%)",
+    borderColor: "rgb(65 0 147 / 3%)",border: "1px solid rgb(65 0 147 / 3%)"}}>
+          <Box  p={0}>
+          <Stack spacing={0}>
+         
+          <List spacing={3} className="history-list">
+          
+        <ListItem 
+          p={2}
+          borderRadius="md"
+          _hover={{
+            backgroundColor: "#FFFEEE",
+            cursor: "pointer",
+            border: "1px solid #41009380",
+            color:"#000",
+          }}
+        >
+          Baelfyre - Canine - 3y - M
+        </ListItem>
+        <ListItem
+          p={2}
+          borderRadius="md"
+          _hover={{
+            backgroundColor: "#FFFEEE",
+            cursor: "pointer",
+            border: "1px solid #41009380",
+            color:"#000",
+          }}
+        >
+         Blaze - Canine - 14y - M
+        </ListItem>
+       
+    </List>
+         </Stack>
+          </Box>
+          </GridItem>
+
+          </Grid>
+          </Container>
+   
+  </ModalBody>
+  <ModalFooter justifyContent={"space-between"}>
+  <FormControl className="optionselect filteroption">
+          <legend>Sort By</legend>
+          <div className="selectoption">
+          <Select placeholder="">
+            <option value="option1">Name</option>
+            <option value="option2">Date</option>
+            <option value="option3">Option 3</option>
+          </Select>
+          </div>
+        </FormControl>
+    <Button type="button" minW={"100px"}  mr={0}  borderRadius={"5px"}>
+      Done
+     </Button>
+              
+  </ModalFooter>
+</ModalContent>
+</Modal>
+
+{/* Appointment Openings */}
+<Modal isOpen={modalAppopening.isOpen} onClose={modalAppopening.onClose} size={"md"}>
+<ModalOverlay />
+<ModalContent className="app-opening ">
+  <ModalHeader>Appointment Openings</ModalHeader>
+  <ModalCloseButton />
+  <ModalBody className="" style={{padding:"10px"}}>
+  <Container maxW="container.xl"   style={{padding:"0px", border: "1px solid #eae9ee",borderRadius: "4px", background: "#f6f1f2"}} mt={0}>
+        <Grid templateColumns="repeat(12, 1fr)" gap={2} p={1.5}>
+          <GridItem colSpan={[12, 6]} >
+           <Grid templateColumns="repeat(12, 1fr)" gap={2}  mb={2}>
+           <GridItem colSpan={[12, 6]}>
+           <FormControl className="optionselect">
+          <legend>From</legend>
+          <div className="selectoption">
+          <Select placeholder="">
+            <option value="option1">02/23/2007</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+          </Select>
+          </div>
+        </FormControl>
+        </GridItem>
+        <GridItem colSpan={[12, 6]} className="bg-Appointment1">
+        <FormControl className="optionselect">
+          <legend>To</legend>
+          <div className="selectoption">
+          <Select placeholder="">
+            <option value="option1">02/23/2007</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+          </Select>
+          </div>
+        </FormControl>
+        </GridItem>
+        </Grid>
+        <Grid templateColumns="repeat(12, 1fr)" gap={2} mb={2}> 
+           <GridItem colSpan={[12, 12]}>
+           <FormControl className="optionselect">
+          <legend>Doctors</legend>
+          <div className="selectoption">
+          <Select placeholder="">
+            <option value="option1">DLM Douglas L Mckee, VMD</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+          </Select>
+          </div>
+        </FormControl>
+        </GridItem>
+
+        </Grid>
+        <Grid templateColumns="repeat(12, 1fr)" gap={2} mb={2}>
+           <GridItem colSpan={[12, 6]}>
+           <FormControl className="optionselect">
+          <legend>Room</legend>
+          <div className="selectoption">
+          <Select placeholder="">
+            <option value="option1">(All)</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+          </Select>
+          </div>
+        </FormControl>
+        </GridItem>
+        <GridItem colSpan={[12, 6]} className="bg-Appointment1">
+          <div className="phone-style">
+        <FormControl className="optionselect">
+      <legend>Min.dur</legend>
+      <NumberInput defaultValue={45} min={1} max={10}  style={{width:"75px"}}>
+        <NumberInputField  style={{height:"37px"}}/>
+        <NumberInputStepper>
+          <NumberIncrementStepper />
+          <NumberDecrementStepper />
+        </NumberInputStepper>
+      </NumberInput>
+    </FormControl>
+    <FormControl className="optionselect">
+      <legend style={{ minWidth: "25px"}}>Min</legend>
+    </FormControl>
+    </div>
+        </GridItem>
+        </Grid>
+          </GridItem>
+          </Grid>
+ 
+   <Grid templateColumns="repeat(12, 1fr)" gap={2}  mb={1.5}>
+          <GridItem colSpan={[12, 12]}>
+            <TableContainer className="aptopeningtable">
+      <Table variant="simple" >
+        <Thead position="sticky" top={0} zIndex="docked">
+          <Tr>
+            <Th>Date</Th>
+            <Th>Day</Th>
+            <Th>Start Time</Th>
+            <Th>End Time</Th>
+            <Th>Duration</Th>
+           
+          </Tr>
+        </Thead>
+        <Tbody>
+            <Tr
+              _hover={{
+                border: '2px solid #41009380',
+                borderRadius: 'md',
+                cursor: 'pointer',
+                bg: '#FFFEEE',
+              }}
+            >
+              <Td>07/19/07</Td>
+              <Td>Thusday</Td>
+              <Td>08:00a</Td>
+              <Td>10:00p</Td>
+              <Td>120</Td>
+              
+            </Tr>
+            <Tr
+              
+              _hover={{
+                border: '2px  solid #41009380',
+                borderRadius: 'md',
+                cursor: 'pointer',
+                bg: '#FFFEEE',
+              }}
+            >
+              <Td>07/19/07</Td>
+              <Td>Thusday</Td>
+              <Td>12:00p</Td>
+              <Td>06:00p</Td>
+              <Td>360</Td>
+              
+            </Tr>
+            <Tr
+              
+              _hover={{
+                border: '2px  solid #41009380',
+                borderRadius: 'md',
+                cursor: 'pointer',
+                bg: '#FFFEEE',
+              }}
+            >
+             <Td>07/20/07</Td>
+              <Td>Friday</Td>
+              <Td>08:00a</Td>
+              <Td>02:15p</Td>
+              <Td>375</Td>
+              
+            </Tr>
+            <Tr
+              
+              _hover={{
+                border: '2px  solid #41009380',
+                borderRadius: 'md',
+                cursor: 'pointer',
+                bg: '#FFFEEE',
+              }}
+            >
+              <Td>07/21/07</Td>
+              <Td>Saturday</Td>
+              <Td>12:00p</Td>
+              <Td>06:00p</Td>
+              <Td>600</Td>
+              
+            </Tr>
+            <Tr
+              
+              _hover={{
+                border: '2px  solid #41009380',
+                borderRadius: 'md',
+                cursor: 'pointer',
+                bg: '#FFFEEE',
+              }}
+            >
+              <Td>07/21/07</Td>
+              <Td>Saturday</Td>
+              <Td>12:00p</Td>
+              <Td>06:00p</Td>
+              <Td>600</Td>
+             
+            </Tr>
+            <Tr
+              
+              _hover={{
+                border: '2px solid #41009380',
+                borderRadius: 'md',
+                cursor: 'pointer',
+                bg: '#FFFEEE',
+              }}
+            >
+                 <Td>07/19/07</Td>
+              <Td>Thusday</Td>
+              <Td>12:00p</Td>
+              <Td>06:00p</Td>
+              <Td>360</Td>
+              
+            </Tr>
+            <Tr
+              
+              _hover={{
+                border: '2px solid #41009380',
+                borderRadius: 'md',
+                cursor: 'pointer',
+                bg: '#FFFEEE',
+              }}
+            >
+              <Td>07/19/07</Td>
+              <Td>Thusday</Td>
+              <Td>12:00p</Td>
+              <Td>06:00p</Td>
+              <Td>360</Td>
+             
+            </Tr>
+            <Tr
+              
+              _hover={{
+                border: '2px solid #41009380',
+                borderRadius: 'md',
+                cursor: 'pointer',
+                bg: '#FFFEEE',
+              }}
+            >
+              <Td>07/19/07</Td>
+              <Td>Thusday</Td>
+              <Td>12:00p</Td>
+              <Td>06:00p</Td>
+              <Td>360</Td>
+             
+            </Tr>
+            <Tr
+              
+              _hover={{
+                border: '2px solid #41009380',
+                borderRadius: 'md',
+                cursor: 'pointer',
+                bg: '#FFFEEE',
+              }}
+            >
+              <Td>07/19/07</Td>
+              <Td>Thusday</Td>
+              <Td>12:00p</Td>
+              <Td>06:00p</Td>
+              <Td>360</Td>
+              
+            </Tr>
+            <Tr
+              
+              _hover={{
+                border: '2px solid #41009380',
+                borderRadius: 'md',
+                cursor: 'pointer',
+                bg: '#FFFEEE',
+              }}
+            >
+             <Td>07/19/07</Td>
+              <Td>Thusday</Td>
+              <Td>12:00p</Td>
+              <Td>06:00p</Td>
+              <Td>360</Td>
+            
+            </Tr>
+            <Tr
+              
+              _hover={{
+                border: '2px solid #41009380',
+                borderRadius: 'md',
+                cursor: 'pointer',
+                bg: '#FFFEEE',
+              }}
+            >
+              <Td>07/19/07</Td>
+              <Td>Thusday</Td>
+              <Td>12:00p</Td>
+              <Td>06:00p</Td>
+              <Td>360</Td>
+            </Tr>
+        </Tbody>
+      </Table>
+    </TableContainer>
+    </GridItem>
+    
+    </Grid>
+          </Container>
+   
+  </ModalBody>
+  <ModalFooter >
+  <Button variant={"outline"} minW={"100px"} mr={3}  borderRadius={"2px"}>
+      Cancel
+    </Button>
+    <Button type="button" minW={"100px"}  mr={0}  borderRadius={"5px"}>
+      Done
+     </Button>
+              
+  </ModalFooter>
+</ModalContent>
+</Modal>
+{/* recurring Appointment */}
+<Modal isOpen={modalRecurringAppointment.isOpen} onClose={modalRecurringAppointment.onClose} size={"md"}>
+<ModalOverlay />
+<ModalContent className="choosepatient ">
+  <ModalHeader>recurring Appointment </ModalHeader>
+  <ModalCloseButton />
+  <ModalBody className="" style={{padding:"10px"}}>
+  <Container maxW="container.xl"   style={{padding:"0px"}} mt={0}>
+  <Grid templateColumns="repeat(12, 1fr)" gap={2}>
+  <GridItem colSpan={[12, 12]} className="bg-Appointment" style={{background: "rgb(65 0 147 / 3%)",
+    borderColor: "rgb(65 0 147 / 3%)",border: "1px solid rgb(65 0 147 / 3%)"}}>
+       <Grid templateColumns="repeat(12, 1fr)" gap={0}>
+       <GridItem colSpan={[12, 6]}>
+       <Box mx="auto" className="recurringcalender">
+        <CalendarView/>
+      </Box>
+      </GridItem>
+      <GridItem colSpan={[12, 6]}>
+      <h3 className="pro-title">Propagate to these dates...</h3>
+         <Box className="pro-patten">
+          
+         <Button type="button" minW={"100px"}  mr={0}  borderRadius={"5px"} className="patten-btn" onClick={modalRecurPattern.onOpen}>
+         Pattern...
+     </Button>
+         </Box>
+        
+      </GridItem>
+      </Grid>
+      </GridItem>
+          </Grid>
+          </Container>
+   
+  </ModalBody>
+  <ModalFooter>
+  <Button variant={"outline"} minW={"100px"} mr={3}  borderRadius={"2px"}>
+      Cancel
+    </Button>
+    <Button type="button" minW={"100px"}  mr={0}  borderRadius={"5px"}>
+      Done
+     </Button>
+              
+  </ModalFooter>
+</ModalContent>
+</Modal>
+
+{/* recurring pattern */}
+<Modal isOpen={modalRecurPattern.isOpen} onClose={modalRecurPattern.onClose} size={"sm"}>
+<ModalOverlay />
+<ModalContent className="choosepatient ">
+  <ModalHeader>RECURRENCE PATTERN</ModalHeader>
+  <ModalCloseButton />
+  <ModalBody className="" style={{padding:"10px"}}>
+  <Container maxW="container.xl"   style={{padding:"0px"}} mt={0}>
+  <Grid templateColumns="repeat(12, 1fr)" gap={2}>
+  <GridItem colSpan={[12, 12]} className="bg-Appointment" style={{background: "transparent",
+    borderColor: "rgb(65 0 147 / 3%)",border: "0px solid rgb(65 0 147 / 3%)"}}>
+       <Grid templateColumns="repeat(12, 1fr)" gap={0}>
+       <GridItem colSpan={[12, 12]} className="bg-Appointment">
+          <Box  p={0} pb={2}>
+          <Stack>
+          <Heading fontSize="xl">RECURRENCE PATTERN</Heading>
+          <RadioGroup onChange={setValue} value={value} px={2}>
+        <Stack direction="row">
+        <Radio value="1">Daily</Radio>
+        <Radio value="2">Weekly</Radio>
+        <Radio value="3">Monthly</Radio>
+        <Radio value="4">Yearly</Radio>
+      </Stack>
+    </RadioGroup> 
+    <RadioGroup onChange={setValue} value={value} px={2}>
+        <Stack direction="row">
+        <Radio value="1">Every</Radio>
+        <FormControl className="optionselect">
+     
+     <div className="selectoption" style={{flexDirection:"row",alignItems:"center"}}>
+     <NumberInput defaultValue={0} min={1} max={10}  style={{width:"100px"}}>
+        <NumberInputField  style={{height:"37px"}}/>
+        <NumberInputStepper>
+          <NumberIncrementStepper />
+          <NumberDecrementStepper />
+        </NumberInputStepper>
+      </NumberInput>
+     <legend style={{paddingLeft: "5px"}}>day(s)</legend>
+     </div>
+   </FormControl>
+      </Stack>
+    </RadioGroup> 
+    <RadioGroup onChange={setValue} value={value} px={2}>
+        <Stack direction="row">
+        <Radio value="1">Every Weekday.</Radio>
+      
+      </Stack>
+    </RadioGroup> 
+         </Stack>
+          </Box>
+          </GridItem>
+      <GridItem colSpan={[12, 12]} mt={2}>
+      <Box  p={0}>
+          <Stack>
+          <Heading fontSize="xl">RANGE OF RECURRENCE</Heading>
+          <FormControl className="optionselect" style={{width:"200px"}} px={2}>
+          <legend>Start</legend>
+          <div className="selectoption" style={{width:"200px"}}>
+          <Select placeholder="" style={{width:"200px"}}>
+            <option value="option1">05/01/2008</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+          </Select>
+          </div>
+        </FormControl>
+          <RadioGroup onChange={setValue} value={value} px={2}>
+        <Stack direction="row">
+        <Radio value="1"><span style={{whiteSpace:"nowrap",fontWeight:"500"}}>End After</span></Radio>
+        <FormControl className="optionselect">
+     
+     <div className="selectoption" style={{flexDirection:"row",alignItems:"center"}}>
+     <NumberInput defaultValue={0} min={1} max={10}  style={{width:"100px"}}>
+        <NumberInputField  style={{height:"37px"}}/>
+        <NumberInputStepper>
+          <NumberIncrementStepper />
+          <NumberDecrementStepper />
+        </NumberInputStepper>
+      </NumberInput>
+     <legend style={{paddingLeft: "5px"}}>Occurances</legend>
+     </div>
+   </FormControl>
+      </Stack>
+    </RadioGroup>
+    <RadioGroup onChange={setValue} value={value} px={2}>
+        <Stack direction="row">
+        <Radio value="1"><span style={{whiteSpace:"nowrap",fontWeight:"500"}}>End By</span></Radio>
+        <FormControl className="optionselect" style={{width:"200px"}}>
+          
+          <div className="selectoption" style={{width:"200px"}}>
+          <Select placeholder=" " style={{width:"200px"}}>
+            <option value="option1"></option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+          </Select>
+          </div>
+        </FormControl>
+      </Stack>
+    </RadioGroup>
+         </Stack>
+          </Box>
+      </GridItem>
+      
+      </Grid>
+      </GridItem>
+          </Grid>
+          </Container>
+   
+  </ModalBody>
+  <ModalFooter>
+  <Button variant={"outline"} minW={"100px"} mr={3}  borderRadius={"2px"}>
+      Cancel
+    </Button>
+    <Button type="button" minW={"100px"}  mr={0}  borderRadius={"5px"}>
+      ok
+     </Button>
+              
   </ModalFooter>
 </ModalContent>
 </Modal>

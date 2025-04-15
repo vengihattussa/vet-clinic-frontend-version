@@ -1,0 +1,44 @@
+name: Build and Deploy on dev.
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Dependencies and Build
+        run: |
+          #npm config set registry http://registry.npmjs.org
+          npm install -g pnpm
+          #pnpm store prune
+          #rm -rf node_modules
+          pnpm install
+          pnpm run build
+          #ls -lha
+
+      - name: Set up AWS CLI
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.DEV_AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.DEV_AWS_SECRET_ACCESS_KEY }}
+          aws-region: "ap-south-1"
+
+      - name: Upload to S3
+        run: |
+          aws s3 cp dist/ s3://dev.vetclinic.infimatrix.in/ --recursive
+
+      - name: Invalidate CF cache
+        run: |
+          aws cloudfront create-invalidation --distribution-id E2QZ08O2RFYZDI --paths "/*"

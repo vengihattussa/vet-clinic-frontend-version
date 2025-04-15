@@ -207,6 +207,8 @@ const Appointment = () => {
         rescheduleAppointmentId={rescheduleAppointmentId}
         setRescheduleAppointmentId={setRescheduleAppointmentId}
       />
+
+     
     </>
   );
 };
