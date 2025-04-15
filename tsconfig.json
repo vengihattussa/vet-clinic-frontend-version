@@ -1,0 +1,46 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+
+    "baseUrl": "./src",
+    "paths": {
+      "@src/assets/*": ["assets/*"],
+      "@src/common/*": ["common/*"],
+      "@src/components/*": ["components/*"],
+      "@src/components/Client/*": ["components/client/*"],
+      "@src/components/Patients/*": ["components/patient/*"],
+      "@src/constants/*": ["constants/*"],
+      "@src/hooks/*": ["hooks/*"],
+      "@src/hoc/*": ["hoc/*"],
+      "@src/layout/*": ["layout/*"],
+      "@src/pages/*": ["pages/*"],
+      "@src/provider/*": ["provider/*"],
+      "@src/routes/*": ["routes/*"],
+      "@src/services/*": ["services/*"],
+      "@src/store/*": ["store/*"],
+      "@src/theme/*": ["theme/*"],
+      "@src/utils/*": ["utils/*"],
+      "@src/schema/*": ["schema/*"],
+      "@src/@types/*": ["@types/*"]
+    },
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": ["src"],
+  "references": [{"path": "./tsconfig.node.json"}]
+}
