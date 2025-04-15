@@ -1,0 +1,16 @@
+export const API_ROUTE = {
+  GET_ALL_APPOINTMENT: "/api/vetClinic/appointment/getAllAppointment",
+  GET_BY_ID: "/api/vetClinic/appointment/getAppointment/:id",
+  CREATE_APPOINTMENT: "/api/vetClinic/appointment/saveAppointment",
+  UPDATE_APPOINTMENT: "api/vetClinic/appointment/updateAppointment",
+  GET_APPOINTMENT_BY_DOCTOR: "/api/vetClinic/appointment/getAppointmentByDoctor",
+  GET_APPOINTMENT_BY_DOCTOR_BY_DATE: "/api/vetClinic/appointment/getAppointmentByDoctor",
+  GET_DOCTOR_LIST: "/api/vetClinic/doctor/list",
+  GET_ROOM_LIST: "/api/room/getAll",
+  GET_CLIENT_LIST: "/api/vetClinic/client/dropdown/list",
+  GET_PATIENT_LIST: "api/vetClinic/client/getPatientListByClientId",
+  UPDATE_APPOINTMENT_STATUS: "api/vetClinic/appointment/updateAppointmentStatus",
+  DELETE_APPOINTMENT: "api/vetClinic/appointment/deleteAppointment",
+  SIDE_COMPONENT_APPOINTMENT: "/api/vetClinic/appointment/date/appointments ",
+  UPDATE_RESCHEDULE_APPOINTMENT: "api/vetClinic/appointment/rescheduleAppointment",
+};
